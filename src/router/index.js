@@ -57,6 +57,20 @@ export const constantRoutes = [{
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [{
+  path: '/book',
+  component: Layout,
+  redirect: '/book/create',
+  children: [{
+    path: '/book/create',
+    component: () => import('@/views/book/create'),
+    name: 'book',
+    meta: {
+      title: '添加图书',
+      icon: 'edit',
+      roles: ['admin']
+    }
+  }]
+}, {
   path: '/error',
   component: Layout,
   redirect: 'noRedirect',
